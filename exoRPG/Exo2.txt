@@ -1,0 +1,17 @@
+select * from personnage INNER JOIN classe on personnage.idClasse=classe.idClasse; 
+select nom,levelMin,degat,libelle,estDistance from arme INNER JOIN typearme on  arme.idTypeArme=typearme.idTypeArme; 
+select personnage.nom ,classe.nom from personnage INNER JOIN classe on personnage.idClasse=classe.idClasse; 
+select personnage.nom ,arme.nom from personnage INNER JOIN arme on personnage.idArmeUtilise=arme.idArme; 
+select personnage.nom ,arme.nom, levelMin,degat,libelle as "Type d'arme",estDistance from personnage INNER JOIN arme on personnage.idArmeUtilise=arme.idArme INNER JOIN typearme on arme.idTypeArme=typearme.idTypeArme;
+select personnage.nom, level, arme.nom, levelMin from personnage INNER JOIN dispose on personnage.idpersonnage=dispose.idpersonnage INNER JOIN arme on arme.idArme=dispose.idArme;
+select arme.nom, levelMin, degat,libelle from arme INNER JOIN typearme on arme.idTypeArme=typearme.idTypearme where estDistance =0;
+select personnage.nom,arme.nom,libelle from personnage INNER JOIN arme on personnage.idArmeUtilise=arme.idArme INNER JOIN typearme on arme.idTypeArme=typearme.idTypeArme where idClasse=1;
+select personnage.idPersonnage, personnage.nom, arme.nom,libelle from personnage INNER JOIN dispose on personnage.idPersonnage=dispose.idpersonnage INNER JOIN arme on arme.idArme=dispose.idArme INNER JOIN typearme on arme.idTypeArme=typearme.idTypeArme where level=10;
+select personnage.idPersonnage, personnage.nom, arme.nom,libelle from personnage INNER JOIN dispose on personnage.idPersonnage=dispose.idpersonnage INNER JOIN arme on arme.idArme=dispose.idArme INNER JOIN typearme on arme.idTypeArme=typearme.idTypeArme where level=10 ORDER BY idPersonnage;
+select avg(degat) as "Moyenne dégat a distance" from arme INNER JOIN typearme on arme.idTypeArme=typearme.idTypeArme where estDistance =1;  
+select personnage.nom from personnage INNER JOIN dispose on personnage.idPersonnage=dispose.idpersonnage INNER JOIN arme on arme.idArme=dispose.idArme INNER JOIN typearme on arme.idTypeArme=typearme.idTypeArme where typearme.libelle like "A%" limit 3;
+select typearme.libelle,arme.nom from arme INNER JOIN typearme on arme.idTypeArme=typearme.idTypeArme; 
+select typearme.libelle,arme.nom from typearme LEFT JOIN arme on arme.idTypeArme=typearme.idTypeArme ;    
+select typearme.libelle,arme.nom from arme RIGHT JOIN typearme on arme.idTypeArme=typearme.idTypeArme ;  
+select * from arme left join personnage on personnage.idArmeUtilise=arme.idArme ORDER BY levelmin; 
+select arme.idArme,arme.nom,personnage.nom from personnage Right Join dispose on personnage.idPersonnage=dispose.idPersonnage RIGHT JOIN arme on dispose.idArme=arme.idArme; 

@@ -1,0 +1,45 @@
+ CREATE TABLE attaque (
+    ->   idAttaque int(11) NOT NULL ,
+    ->   nom varchar(60) NOT NULL ,
+    ->   baseDegat int,
+    ->   test varchar(50) 
+    -> ) ;
+
+-----------------------------------------------------------------------------------------------------------
+alter table attaque  modify test varchar(50); 
+-----------------------------------------------------------------------------------------------------------
+alter table attaque change test toto int;
+-----------------------------------------------------------------------------------------------------------
+alter table attaque drop toto;
+-----------------------------------------------------------------------------------------------------------
+CREATE TABLE utilise (
+  idAttaque int(11) NOT NULL ,
+  idPersonnage int(11) NOT NULL,
+  levelattaque int(11) NOT NULL
+) ;
+-----------------------------------------------------------------------------------------------------------
+INSERT INTO `utilise` (`idAttaque`, `idPersonnage`, `levelattaque`) VALUES
+(1, 1, 2),
+(1, 4, 3),
+(2, 1, 2),
+(2, 2, 1),
+(4, 3, 2),
+(4, 4, 3);
+INSERT INTO `attaque` (`idAttaque`, `nom`, `baseDegat`) VALUES
+(1, "attaque1", 5),
+(2, "attaque2", 10),
+(3, "attaque3", 15),
+(4, "attaque4", 20);
+------------------------------------------------------------------------------------------------------------
+update attaque set baseDegat=10;
+------------------------------------------------------------------------------------------------------------
+update attaque set baseDegat=50 where idAttaque=2 or idAttaque=3 ;
+------------------------------------------------------------------------------------------------------------
+alter table personnage add dateNaissance varchar(11); 
+update personnage set dateNaissance="2001-01-01" where idPersonnage=1;
+update personnage set dateNaissance="2001-02-01" where idPersonnage=2;
+update personnage set dateNaissance="2001-03-01" where idPersonnage=3;
+update personnage set dateNaissance="2001-04-01" where idPersonnage=4;
+update personnage set dateNaissance="2001-05-01" where idPersonnage=5;
+update personnage set dateNaissance="2001-06-01" where idPersonnage=6;
+update personnage set dateNaissance="2001-06-01" where idPersonnage=7;

@@ -109,7 +109,35 @@ CREATE TABLE typearme (
   estDistance tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE utilise (
+  idAttaque int(11) NOT NULL ,
+  idPersonnage int(11) NOT NULL,
+  levelattaque int(11) NOT NULL
+) ;
 
+INSERT INTO `utilise` (`idAttaque`, `idPersonnage`, `levelattaque`) VALUES
+(1, 1, 2),
+(1, 4, 3),
+(2, 1, 2),
+(2, 2, 1),
+(4, 3, 2),
+(4, 4, 3);
+
+
+CREATE TABLE attaque (
+  idAttaque int(11) NOT NULL ,
+  nom varchar(60) NOT NULL ,
+  baseDegat int,
+  test tinyint
+) ;
+
+
+
+INSERT INTO `attaque` (`idAttaque`, `nom`, `baseDegat`) VALUES
+(1, "attaque1", 5),
+(2, "attaque2", 10),
+(3, "attaque3", 15),
+(4, "attaque4", 20);
 
 INSERT INTO `typearme` (`idTypeArme`, `libelle`, `estDistance`) VALUES
 (1, 'Hache', 0),
@@ -158,6 +186,10 @@ ALTER TABLE personnage
 
 ALTER TABLE typearme
   MODIFY `idTypeArme` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  
+
+ALTER TABLE attaque
+  MODIFY `test` varchar(50) NOT NULL ;  
 
 
 ALTER TABLE arme
