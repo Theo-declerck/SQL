@@ -1,20 +1,23 @@
-requetes:
+ requetes:
 select * from personnage;
 select * from arme;  
 select nom , levelMin from arme;
 select nom,surnom,LEVEL from personnage;
 select nom as Pseudo, LEVEL as niveau from personnage; 
 select libelle as "Types d'armes du jeu" from typearme; 
+-----------------------------------------------------COUNT/AVG/SUM/MIN/MAX:------------------------------------------------------
 select count(nom) from arme;
 select count(nom) as "Nombre de personnage" from personnage;
 select avg(level) as "Moyenne de niveau" from personnage;
 select sum(baseForce) as "Point de force", sum(baseAgi) as "Point d'Agilité", sum(baseIntel)as "Point d'Intelligence" from classe;
 select min(levelMin),max(levelMin) from arme;
 select nom, (baseForce+baseAgi+baseIntel) as "NB de caractéristique" from classe; 
-select concat(nom,surnom) as personnage from personnage; 
+----------------------------------------CONCAT/SUBSTRING:------------------------------------------------------------------------
+select concat(nom, surnom) as personnage from personnage; 
 select concat(nom," ;F : ", baseForce," ;A : ", baseAgi,";I : ", baseIntel) as classe from classe;
 select substring(nom,1,6) from personnage;
 select concat(substring(nom,1,5),substring(description,1,20)) as Classe from classe;
+---------------------------------------------WHERE:------------------------------------------------------------------------------
 select * from arme where(levelMin>=5); 
 select * from arme where(degat<=25);
 select nom,surnom from personnage where(level=10);
@@ -27,12 +30,14 @@ select * from arme where idArme <=2 or degat between 25 and 40;
 select * from personnage where level!=8 and(level>7 or level<6); 
 select count(idPersonnage) as" NB Perso <10" from personnage where level!=10; 
 select avg(degat)as "Moyenne dégat" from arme where levelMin between 3 and 7;
+-------------------------------------------------LIKE:---------------------------------------------------------------------------
 select * from personnage where nom like "L%";
 select * from personnage where nom like "L%" and nom like "%ER"; 
-select * from arme  where nom like "%bois%"; 
-select * from arme  where nom like "A%" and nom like "__B%";
-select * from arme where idArme !=3 and idArme !=6 limit 5 ;
-select * from personnage where(idPersonnage=2 or idPersonnage=3 or idPersonnage=4 or idPersonnage=6) and level=10 ; 
+select * from arme where nom like "%bois%"; 
+select * from arme where nom like "A_B%";
+select * from arme where idArme IN(1,2,4,5,7);
+select * from personnage where(idPersonnage IN (2,3,4,6) and level=10 ; 
+--------------------------------------NOT NULL/NULL:-----------------------------------------------------------------------------
 select * from personnage where surnom is not null; 
 select * from personnage where surnom is null; 
 select * from personnage limit 3;  

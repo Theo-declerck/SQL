@@ -1,0 +1,9 @@
+select * from arme where degat > (select avg(degat) from arme);
+
+select * from personnage where level < (select avg(level) from personnage);
+
+ select * from personnage where level > (select avg(level) from personnage where idClasse=2);
+
+select max(nb) from (select count(arme.idTypeArme) as "nb" from arme INNER JOIN typearme on arme.idTypeArme=typearme.idTypearme where estDistance=1 Group by libelle) as a;
+
+

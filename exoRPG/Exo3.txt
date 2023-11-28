@@ -1,0 +1,17 @@
+select libelle, count(arme.idTypeArme) from typearme INNER JOIN arme on arme.idTypeArme=typearme.idTypeArme GROUP BY libelle; 
+
+select classe.nom,description, count(personnage.idClasse) from classe INNER JOIN personnage on classe.idClasse=personnage.idClasse GROUP BY classe.idClasse; 
+
+select personnage.nom, count(dispose.idArme) from dispose INNER JOIN personnage on personnage.idPersonnage=dispose.idPersonnage INNER JOIN arme on arme.idArme=dispose.idArme  GROUP BY personnage.nom;  
+
+select classe.nom as "Classe", personnage.nom as "Nom du personnage", count(dispose.idArme) as "NB arme" from dispose INNER JOIN personnage on personnage.idPersonnage=dispose.idPersonnage INNER JOIN classe on personnage.idClasse=classe.idClasse INNER JOIN arme on arme.idArme=dispose.idArme where classe.idClasse =1 GROUP BY personnage.nom;
+
+select arme.nom as "Nom de l'arme", count(personnage.idPersonnage) from arme LEFT JOIN dispose on arme.idArme=dispose.idArme LEFT JOIN personnage on personnage.idPersonnage=dispose.idPersonnage GROUP BY arme.nom; 
+
+select classe.nom as "Classe", avg(personnage.level) as "Niveau moyen" from personnage INNER JOIN classe on personnage.idClasse=classe.idClasse GROUP BY classe.nom; 
+
+select classe.nom as "Classe", avg(personnage.level) as "Niveau moyen" from personnage INNER JOIN classe on personnage.idClasse=classe.idClasse  GROUP BY classe.nom HAVING avg(personnage.level) > 9;
+
+ select arme.nom as "Nom de l'arme", count(personnage.idPersonnage) from arme LEFT JOIN dispose on arme.idArme=dispose.idArme LEFT JOIN personnage on personnage.idPersonnage=dispose.idPersonnage GROUP BY arme.nom HAVING count(personnage.idPersonnage) < 3 and count(personnage.idPersonnage)!= 0;
+
+ select typearme.libelle, count(arme.idTypeArme) from arme RIGHT JOIN typearme on arme.idTypeArme=typearme.idTypeArme where estDistance=0 GROUP BY typearme.libelle HAVING count(arme.idTypeArme) <2; 

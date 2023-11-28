@@ -1,0 +1,9 @@
+select * from personnage where dateNaissance > '2002-12-31';
+
+ select personnage.nom,YEAR(dateNaissance) from personnage;
+
+select personnage.nom, ROUND((DATEDIFF(CURDATE(), dateNaissance)/365)-0.5) as "Age" from personnage;
+
+ select year(now())-avg(year(dateNaissance)) from personnage;
+
+select personnage.nom, ROUND((DATEDIFF(CURDATE(), dateNaissance)/365)-0.5) as "Age" from personnage where ROUND((DATEDIFF(CURDATE(), dateNaissance)/365)-0.5)> 15 ;

@@ -26,7 +26,7 @@ INSERT INTO `arme` (`idArme`, `nom`, `levelMin`, `degat`, `idTypeArme`) VALUES
 (7, 'Excalibur', 10, 65, 3),
 (8, 'Arbalete givrante', 4, 15, 4),
 (9, 'Dague de voleur', 2, 7, 6),
-(10, 'Dage de contrebandier', 6, 14, 6);
+(10, 'Dague de contrebandier', 6, 14, 6);
 
 -- --------------------------------------------------------
 
